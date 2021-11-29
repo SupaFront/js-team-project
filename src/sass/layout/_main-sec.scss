@@ -7,5 +7,38 @@
   flex-basis: calc((100% - 30px * var(--grid-item)) / var(--grid-item));
   margin-left: 30px;
   margin-top: 30px;
-  --grid-item: 3;
+  --grid-item: 1;
+}
+
+.film-title {
+  margin-top: 10px;
+  font-weight: 500;
+  font-family: Roboto;
+}
+
+.card-description {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-family: Roboto;
+}
+
+.film-mark {
+  margin-left: 10px;
+  background: #ff6b01;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 1px 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    --grid-item: 2;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card {
+    --grid-item: 3;
+  }
 }
