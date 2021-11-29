@@ -1,15 +1,18 @@
 .header-icon {
-  fill: #818181;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 .header {
   color: $primary-color;
   padding-top: 48px;
-  padding-bottom: 65px;
+  padding-bottom: 97px;
   background-size: cover;
 }
-
+.header-title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16;
+}
 .header-wrapper {
   display: flex;
   justify-content: space-between;
@@ -17,9 +20,40 @@
 }
 .header-menu {
   display: flex;
-  font-weight: 500;
   font-size: 12px;
-  line-height: 1, 16;
+  line-height: 1.16;
+  margin-bottom: 41px;
+}
+.header-menu-item:last-child {
+  margin-left: 40px;
+}
+.input-box {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.5px solid $primary-color;
+  color: $primary-color;
+  &::placeholder {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.14px;
+  }
+}
+.search-film-form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.btn-search {
+  display: inline-flex;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.search-icon {
+  width: 12px;
+  height: 12px;
 }
 // .btn-nav-list {
 //   margin-top: 50px;
