@@ -1,18 +1,35 @@
 <header class="header">
   <div class="container">
-    <a class="header-logo" href="./">
+    <div class="header-wrapper">
+    <a class="header-logo link" href="./">
       <svg class="header-icon">
         <use href="./images/symbol-defs.svg#film"></use>
       </svg>
       <span class="header-title">Filmoteka</span>
     </a>
     <ul class="header-menu list">
-      <li class="header-item">
-        <a class="header-item-link" href="">HOME</a>
+      <li class="header-menu-item">
+        <a class="header-item-link link" href="">HOME</a>
       </li>
-      <li class="header-item">
-        <a class="header-item-link" href="">MY LIBRARY</a>
+      <li class="header-menu-item">
+        <a class="header-item-link link" href="">MY LIBRARY</a>
       </li>
     </ul>
-  </div>
+    </div>
+     <form class="search-film-form" id="search-form">
+          <input
+            class="input-box"
+            type="text"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Поиск фильмов"
+          />
+          <button class="btn-search" type="submit"><svg class="search-icon">
+        <use href="./images/symbol-defs.svg#search"></use>
+      </svg></button>
+        </form>
+    <!-- <ul class= "btn-nav-list list">
+    <button class="btn-nav-item" type="button">WATCHED</button>
+    <button class="btn-nav-item" type="button">QUEUE</button>
+    </ul> -->
 </header>
