@@ -1,1 +1,13 @@
-@import './base/common';
+////BASE
+
+@import './base/common.scss';
+@import './base/container.scss';
+@import './base/section-padding.scss';
+
+////LAYOUT
+@import './layout/header.scss';
+@import './layout/main-sec.scss';
+@import './layout/footer.scss';
+
+////UTILS
+@import './utils/variables';
