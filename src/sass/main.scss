@@ -1,6 +1,5 @@
 ////UTILS
-@import './utils/variables.scss';
-
+@import './utils/variables';
 ////BASE
 
 @import './base/common.scss';
@@ -11,3 +10,4 @@
 @import './layout/header.scss';
 @import './layout/main-sec.scss';
 @import './layout/footer.scss';
+@import './layout/modal.scss';
