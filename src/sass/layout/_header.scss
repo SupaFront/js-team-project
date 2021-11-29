@@ -7,22 +7,65 @@
   color: $primary-color;
   padding-top: 48px;
   padding-bottom: 65px;
+  background-size: cover;
 }
 
 .header-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 .header-menu {
   display: flex;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1, 16;
 }
-.btn-nav-list {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-}
-.btn-nav-item {
-  padding-top: 14px;
-  padding-bottom: 14px;
-  max-width: 130px;
+// .btn-nav-list {
+//   margin-top: 50px;
+//   display: flex;
+//   justify-content: space-between;
+// }
+// .btn-nav-item {
+//   padding-top: 14px;
+//   padding-bottom: 14px;
+//   max-width: 130px;
+// }
+.header {
+  //0-767
+  @media screen and (max-width: 767px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/mobile/home-header2x.jpg);
+    &-title {
+      display: none;
+    }
+  }
+  @media (min-device-pixel-ratio: 2) and (max-width: 767px),
+    (min-resolution: 192dpi) and (max-width: 767px),
+    (min-resolution: 2dppx) and (max-width: 767px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images//mobile/home-header.jpg);
+  }
+  //768
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/tablet/home-header2x.jpg);
+  }
+  @media (min-device-pixel-ratio: 2) and (min-width: 768px),
+    (min-resolution: 192dpi) and (min-width: 768px),
+    (min-resolution: 2dppx) and (min-width: 768px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/tablet/home-header.jpg);
+  }
+  //1200
+  @media screen and (min-width: 1024px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/desktop/home-header2x.jpg);
+  }
+  @media (min-device-pixel-ratio: 2) and (min-width: 1024px),
+    (min-resolution: 192dpi) and (min-width: 1024px),
+    (min-resolution: 2dppx) and (min-width: 1024px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/desktop/home-header.jpg);
+  }
 }
