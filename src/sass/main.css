@@ -1,1 +1,130 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+body {
+  font-family: Montserrat, sans-serif;
+  color: var(--main-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-style: initial;
+  color: inherit;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 648px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 912px;
+  }
+}
+
+.section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.header-icon {
+  fill: #818181;
+  width: 20px;
+  height: 20px;
+}
+
+.film-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.card {
+  -ms-flex-preferred-size: calc((100% - 30px * var(--grid-item)) / var(--grid-item));
+      flex-basis: calc((100% - 30px * var(--grid-item)) / var(--grid-item));
+  margin-left: 30px;
+  margin-top: 30px;
+  --grid-item: 1;
+}
+
+.film-title {
+  margin-top: 10px;
+  font-weight: 500;
+  font-family: Roboto;
+}
+
+.card-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+  font-family: Roboto;
+}
+
+.film-mark {
+  margin-left: 10px;
+  background: #ff6b01;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 1px 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    --grid-item: 2;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card {
+    --grid-item: 3;
+  }
+}
+/*# sourceMappingURL=main.css.map */
