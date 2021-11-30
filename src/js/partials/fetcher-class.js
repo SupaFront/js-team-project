@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class MoviesFetcher {
+export class MoviesFetcher {
   #PRIVATE_KEY = '9b19f947fd56f1488a190c13578ec724';
   page = 1;
   baseUrl = 'https://api.themoviedb.org/3/';
