@@ -8,36 +8,36 @@
     <title>My Library</title>
   </head>
   <body>
-    <header class="header header-library">
-      <div class="container">
-        <div class="header-wrapper">
-          <nav class="navigation">
-            <ul>
-              <li>
-                <a class="header-logo-link" href="./">
-                  <svg class="header-icon">
-                    <use href="./images/symbol-defs.svg#film" width="24" height="24"></use>
-                  </svg>
-                  <span class="header-title">Filmoteka</span>
-                </a>
-              </li>
-              <li>
-                <a class="header-item-link" href="">Home</a>
-              </li>
-              <li>
-                <a class="header-item-link" href="index.html">My Library</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <ul class="header-menu list">
-          <li class="header-item">
+    <header class="header header-library"> 
+       <div class="container">
+      <div class="header-wrapper">
+    <a class="header-logo-link link" href="./">
+      <svg class="header-icon">
+        <use href="./images/symbol-defs.svg#film"></use>
+      </svg>
+      <span class="header-title">Filmoteka</span>
+    </a>
+    <ul class="header-menu list">
+      <li class="header-menu-item">
+        <a class="header-item-link link" href="./">HOME</a>
+      </li>
+      <li class="header-menu-item">
+        <a class="header-item-link link current-page" href="./library.html">MY LIBRARY</a>
+      </li>
+    </ul>
+    </div>
+    <div class="nav-btns">
+        <!-- <ul class="header-menu list">
+
+          <li class="header-btns"> -->
             <button class="watched-btn" href="">Watched</button>
-          </li>
-          <li class="header-item">
+          <!-- </li>
+          <li class="header-btns"> -->
             <button class="queue-btn" href="">Queue</button>
-          </li>
-        </ul>
+          <!-- </li>
+        </ul> -->
+        </div>
+      </div>
       </div>
     </header>
     <script src="./js/partials/library-buttons.js"></script>
