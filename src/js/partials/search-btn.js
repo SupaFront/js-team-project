@@ -1,6 +1,7 @@
 import MoviesFetcher from './fetcher-class';
 import template from '/templates/grid-items.hbs';
 import markupClass from './markup-creator';
+import Notiflix from 'notiflix';
 
 const userQueryInput = document.querySelector('input');
 const formRef = document.querySelector('form');
@@ -16,9 +17,12 @@ formRef.addEventListener('submit', e => {
 });
 
 async function searchMovies() {
-  const moviesArray = await moviesFetcher.searchMovie();
-  console.log(moviesArray);
   markupMaker.clearMarkup();
-  markupMaker.createMarkup('beforeend', moviesArray);
-  // дальше рисовать маркап по этому объекту
+  try {
+    const moviesArray = await moviesFetcher.searchMovie();
+    console.log(moviesArray);
+    markupMaker.createMarkup('beforeend', moviesArray);
+  } catch {
+    Notiflix.Notify.failure('Nothing is found, please try again');
+  }
 }
