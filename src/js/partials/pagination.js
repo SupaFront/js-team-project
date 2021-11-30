@@ -1,79 +1,11 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import { MoviesFetcher } from './fetcher-class';
-
-// var pagination2 = new Pagination(document.querySelector('#pagination'), {
-//     totalItems: 500,
-//     itemsPerPage: 20,
-//     visiblePages: 5,
-//     centerAlign: true,
-//     lastItemClassName: 'last-child',
-//     // firstItemClassName: '.is-hidden',
-//     template: {
-        
-//         page: '<a href="#" data-page={{page}}><div class="inner-page-number">{{page}}</div></a>',
-//         currentPage: '<span class="page">{{page}}</span>',
-        
-
-//         // moreButton:
-//         // '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
-//         //     '<span class="tui-ico-ellip">...</span>' +
-//         // '</a>',
-//         moveButton: ({type}) => {
-
-//             let lastPage = 500/20;
-//             let template = ' ';
-
-//             if (type === 'next') {
-//                 template =
-//                   '<span>next</span>'
-                
-//               }
-
-              
-//             //   if (type === 'first') {
-//             //     template =
-//             //       '<span>first</span>'
-                
-//             //   }
-
-//               if (type === 'prev') {
-//                 template =
-//                   '<span>prev</span>'
-                
-//               }
-
-//             //   if (type === 'last') {
-//             //     template =
-//             //       <span class="inner-page-number">${lastPage}</span>
-                
-//             //   }
-
-
-
-//               if (type === 'first') {
-//                 //   if(true){}
-//                 template = '<span class="inner-page-number">1</span>'
-//               }
-
-
-
-        
-//             return template;
-//           },
-
-// }});
-
-
-
-
-
-
+import MarkupCreator from './markup-creator';
 const container = document.getElementById('pagination');
 const options = {
 
      itemsPerPage: 20,
-     visiblePages: 50,
+     visiblePages: 5,
      page: 1,
      centerAlign: true,
      firstItemClassName: 'tui-first-child',
@@ -95,26 +27,45 @@ const options = {
              '</a>'
      }
 };
-const pagination = new Pagination(container, options);
+ const pagination = new Pagination(container, options);
 
-pagination.on('beforeMove', async evt => {
-    MoviesFetcher.page = evt.page;
-    const result = MoviesFetcher.searchMovie({ page });
-
+const pageListEl = document.getElementById('pagination');
+const movieLoad = new MoviesFetcher;
+const markup = new MarkupCreator;
+// pageListEl.addEventListener('click', switchPage)
+// function switchPage(event) {
+//     movieLoad.page = event.page
+//     movieLoad.searchMovie()
+// }
+pagination.on('click', async evt => {
+    const { page } = evt;
+    movieLoad.page = evt.page;
+    const movies = await movieLoad.searchMovie();
+    markup.createMarkup(movies.results);
+});
     let itemsQuantity;
 
     const init = async totalV => {
         if (totalV === undefined && !itemsQuantity) {
-            itemsQuantity = await MoviesFetcher.searchMovie();
+            itemsQuantity = await movieLoad.searchMovie();
         }
 
         if (totalV === undefined) { totalV = itemsQuantity.total_results; }
 
         pagination.setTotalItems(totalV);
         pagination.reset();
-    };
+    }
 
+
+
+// pagination.on('beforeMove', async evt => {
+//     MoviesFetcher.page = evt.page;
+//     const result = MoviesFetcher.searchMovie({ page });
+
+//     let itemsQuantity;
+
+    
     // export default {
     //     reset: init,
     // };
-});
+// })

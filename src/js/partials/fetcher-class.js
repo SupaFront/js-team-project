@@ -17,7 +17,7 @@ export class MoviesFetcher {
   }
 
   composeTrendingURL() {
-    return `https://api.themoviedb.org/3/trending/movie/day?api_key=${this.#PRIVATE_KEY}`;
+    return `https://api.themoviedb.org/3/trending/movie/day?api_key=${this.#PRIVATE_KEY}&page=${this.page}`;
   }
 
   async getTrending() {
