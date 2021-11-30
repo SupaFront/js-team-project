@@ -13,10 +13,9 @@ a {
 .watched-btn {
   padding: 14px 38px 12px 38px;
   border-radius: 5px;
-  border: 1px solid #fff;
+  border: 1px solid $primary-color;
   background: rgba(0, 0, 0, 0.56);
-  color: #fff;
-  // transition: color 2250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: $primary-color;
 }
 
 .header-title__library {
@@ -33,9 +32,9 @@ a {
 .queue-btn {
   padding: 14px 38px 12px 38px;
   border-radius: 5px;
-  border: 1px solid #fff;
+  border: 1px solid;
   background: rgba(0, 0, 0, 0.56);
-  color: #fff;
+  color: $primary-color;
 }
 .queue-btn:hover,
 .queue-btn:focus {
@@ -44,41 +43,10 @@ a {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header-library {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../images/mobile/mylibrary-header.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  padding-top: 58px;
-  padding-bottom: 165px;
-}
-
-.header-icon__library {
-  fill: #818181;
-  width: 20px;
-  height: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .header-library {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/tablet/mylibrary-header.jpg');
-  }
-  .header-title__library {
-    display: block;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .header-library {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/desktop/mylibrary-header.jpg');
-  }
-}
-
 .active {
-  background: #ff6b01;
+  background: $accent-color;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid #ff6b01;
+  border: 1px solid $accent-color;
 }
 
 .header-icon {
@@ -108,11 +76,14 @@ a {
   //0-767
   color: $primary-color;
   padding-top: 48px;
-  padding-bottom: 97px;
-  background-size: cover;
+  padding-bottom: 65px;
+  // background-size: cover;
+  // background-repeat: no-repeat;
   @media screen and (max-width: 767px) {
     padding-left: 20px;
     padding-right: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/mobile/mylibrary-header2x.jpg');
     &-title {
@@ -178,4 +149,41 @@ a {
   left: 0px;
   top: 14px;
   background-color: $accent-color;
+}
+
+.watched-btn {
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: $primary-color;
+}
+
+.queue-btn {
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: $primary-color;
+}
+
+.watched-btn {
+  margin-right: 15px;
+}
+
+.nav-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 45px;
 }
