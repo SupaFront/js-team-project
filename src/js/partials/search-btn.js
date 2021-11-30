@@ -1,26 +1,28 @@
 import MoviesFetcher from './fetcher-class';
-import template from '/templates/grid-items.hbs'
+import template from '/templates/grid-items.hbs';
+import markupClass from './markup-creator';
+import Notiflix from 'notiflix';
 
-
-
-const searchBtnRef = document.querySelector('.btn');
-const userQuery = document.querySelector('input');
+const userQueryInput = document.querySelector('input');
 const formRef = document.querySelector('form');
-const galleryRef = document.querySelector('.film-gallery')
-
-const fetcherInstance = new MoviesFetcher();
+const galleryRef = document.querySelector('.film-gallery');
+const moviesFetcher = new MoviesFetcher();
+const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 
 formRef.addEventListener('submit', e => {
   e.preventDefault();
-  fetcherInstance.queue = userQuery.value;
-  userQuery.value = '';
+  moviesFetcher.queue = userQueryInput.value;
+  userQueryInput.value = '';
   searchMovies();
 });
 
-fetcherInstance.openModal(312132);
-
 async function searchMovies() {
-  const arr = await fetcherInstance.searchMovie();
-
-galleryRef.insertAdjacentHTML('beforeend', template(arr))  // дальше рисовать маркап по этому объекту
+  markupMaker.clearMarkup();
+  try {
+    const moviesArray = await moviesFetcher.searchMovie();
+    console.log(moviesArray);
+    markupMaker.createMarkup('beforeend', moviesArray);
+  } catch {
+    Notiflix.Notify.failure('Nothing is found, please try again');
+  }
 }

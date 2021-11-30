@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   margin-left: -30px;
   margin-top: -30px;
+  padding-top: 20px;
 }
 
 .card {
@@ -10,6 +11,21 @@
   margin-left: 30px;
   margin-top: 30px;
   --grid-item: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    --grid-item: 2;
+  }
+  .film-gallery {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    --grid-item: 3;
+  }
 }
 
 .film-title {
@@ -31,16 +47,4 @@
   border-radius: 5px;
   color: #ffffff;
   padding: 1px 10px;
-}
-
-@media screen and (min-width: 768px) {
-  .card {
-    --grid-item: 2;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .card {
-    --grid-item: 3;
-  }
 }

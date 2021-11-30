@@ -21,18 +21,17 @@
   <body>
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <include src="./partials/header.html"></include>
-    <include src="./partials/main.html"></include>
+    <main>
+      <include src="./partials/main.html"></include>
+      <include src="./partials/gallery.html"></include>
+    </main>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
-    <form action="">
-      <input type="text" />
-      <button class="btn">CLICK</button>
-    </form>
 
-    <div class="film-gallery container"></div>
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
 
     <script src="./index.js"></script>
     <script src="./js/partials/search-btn.js"></script>
+    <script src="./js/partials/load-popular.js"></script>
   </body>
 </html>
