@@ -19,6 +19,7 @@ galleryRef.addEventListener('click', e => {
 async function fetchFilmById(id) {
   const filmObj = await fetchFilm.openModal(id);
   filmMarkup.createMarkup('beforeend', filmObj);
+  console.log(filmObj);
   openModal();
 }
 
