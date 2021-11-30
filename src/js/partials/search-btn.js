@@ -19,6 +19,6 @@ fetcherInstance.openModal(312132);
 
 async function searchMovies() {
   const arr = await fetcherInstance.searchMovie();
-
+  galleryRef.innerHTML = '';
   galleryRef.insertAdjacentHTML('beforeend', template(arr)); // дальше рисовать маркап по этому объекту
 }
