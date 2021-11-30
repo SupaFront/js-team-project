@@ -77,13 +77,12 @@ a {
   color: $primary-color;
   padding-top: 48px;
   padding-bottom: 65px;
-  // background-size: cover;
-  // background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100%;
   @media screen and (max-width: 767px) {
     padding-left: 20px;
     padding-right: 20px;
-    background-size: cover;
-    background-repeat: no-repeat;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/mobile/mylibrary-header2x.jpg');
     &-title {
@@ -109,6 +108,7 @@ a {
   }
   //1200
   @media screen and (min-width: 1024px) {
+    width: 100%;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/desktop/mylibrary-header2x.jpg);
   }
