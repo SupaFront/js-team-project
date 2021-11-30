@@ -1,0 +1,236 @@
+// Стили для бэкдропа
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+
+  overflow: auto;
+
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+// Конец
+
+// Стили для контейнера модалки
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $primary-color;
+
+  padding-bottom: 40px;
+
+  @media screen and (max-width: 767px) {
+    max-width: 280px;
+    padding-top: 48px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 618px;
+    padding-top: 42px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 882px;
+    padding-top: 50px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+// Конец
+
+.card-container {
+  overflow: auto;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.film-info {
+  @media screen and (min-width: 768px) {
+    width: calc(100% / 2 - 15px);
+  }
+}
+
+// Кнопка закрытия
+
+.modal-cls-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  display: block;
+  margin-left: auto;
+  padding: 0;
+  cursor: pointer;
+
+  border: none;
+  background-color: transparent;
+  color: $secondary-color;
+
+  &:hover .svg-cls-icon,
+  &:focus .svg-cls-icon {
+    stroke: $accent-color;
+  }
+}
+
+.svg-cls-icon {
+  stroke: $secondary-color;
+}
+
+// Конец
+
+// Картинка
+.poster-img {
+  margin-bottom: 30px;
+  width: 240px;
+  height: auto;
+
+  border-radius: 5px;
+
+  @media screen and (min-width: 768px) {
+    align-self: flex-start;
+    margin-bottom: 0;
+    width: calc(100% / 2 - 15px);
+  }
+}
+// Конец
+
+// О фильме
+
+.modal-film-title {
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  text-transform: uppercase;
+
+  color: $secondary-color;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+}
+
+.info-container {
+  display: flex;
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.left-side-info {
+  color: $modal-font-color;
+
+  & > p:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.right-side-info {
+  margin-left: 40px;
+
+  color: $secondary-color;
+
+  & > p:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-left: 85px;
+  }
+}
+
+.mark {
+  padding: 0 5px;
+  border-radius: 5px;
+
+  color: $primary-color;
+  background-color: $accent-color;
+}
+.original {
+  text-transform: uppercase;
+}
+// span {
+//   color: $modal-font-color;
+// }
+
+.about-title {
+  margin-bottom: 10px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+
+  color: $secondary-color;
+}
+
+.about-text {
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  line-height: 1.67;
+
+  color: $secondary-color;
+}
+// Конец
+
+//Кнопки
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    justify-content: flex-start;
+  }
+}
+
+button {
+  padding: 0 7px;
+  height: 44px;
+  border-radius: 5px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.watched-btn {
+  width: calc(100% / 2 - 7.5px);
+
+  border-color: transparent;
+  color: $primary-color;
+  background-color: $accent-color;
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+  }
+}
+.queue-btn {
+  width: calc(100% / 2 - 7.5px);
+
+  border: 1px solid $secondary-color;
+  color: $secondary-color;
+  @media screen and (min-width: 1024px) {
+    margin-left: 15px;
+    width: 136px;
+  }
+}
+
+// Конец
