@@ -3,20 +3,54 @@ import 'tui-pagination/dist/tui-pagination.css';
 import MarkupCreator from './markup-creator';
 const container = document.getElementById('pagination');
 const options = {
-
+totalItems:500,
      itemsPerPage: 20,
      visiblePages: 5,
      page: 1,
      centerAlign: true,
      firstItemClassName: 'tui-first-child',
      lastItemClassName: 'tui-last-child',
-     template: {
+    template: {
+        
          page: '<a href="#" class="tui-page-btn">{{page}}</a>',
          currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-         moveButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}">' +
-                 '<span class="tui-ico-{{type}}">{{type}}</span>' +
-             '</a>',
+        moveButton: ({ type }) => {
+             
+
+            let lastPage = 500/20;
+            let template = ' ';
+
+            if (type === 'next') {
+                template =
+                  '<span>next</span>'
+                
+              }
+
+              if (type === 'prev') {
+                template =
+                  '<span>prev</span>'
+                
+              }
+
+              if (type === 'last') {
+                template =
+                  `<span class="inner-page-number">${lastPage}</span>`
+                
+              }
+
+
+
+              if (type === 'first') {
+                  
+                template =
+                  `<span class="inner-page-number">1</span>`
+              }
+
+
+
+        
+            return template;
+          },
          disabledMoveButton:
              '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
                  '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -37,8 +71,7 @@ const markup = new MarkupCreator;
 //     movieLoad.page = event.page
 //     movieLoad.searchMovie()
 // }
-pagination.on('click', async evt => {
-    const { page } = evt;
+pagination.on('beforeMove', async evt => {
     movieLoad.page = evt.page;
     const movies = await movieLoad.searchMovie();
     markup.createMarkup(movies.results);
@@ -50,7 +83,7 @@ pagination.on('click', async evt => {
             itemsQuantity = await movieLoad.searchMovie();
         }
 
-        if (totalV === undefined) { totalV = itemsQuantity.total_results; }
+        if (totalV === undefined)  totalV = itemsQuantity.total_results; 
 
         pagination.setTotalItems(totalV);
         pagination.reset();
