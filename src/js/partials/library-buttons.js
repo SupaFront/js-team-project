@@ -8,15 +8,26 @@ queueBtn.addEventListener('click', onQueueClick);
 
 function onWatchedClick(e) {
   e.target.setAttribute('disabled', '');
-  watchedBtn.style.backgroundColor = '#ff6b01';
+  if (e.target.classList.contains('active')) {
+    return;
+  }
+
+  e.target.classList.add('active');
+  // queueBtn.style.backgroundColor = '#ff6b01';
   watchedBtn.removeAttribute('disabled');
+  queueBtn.classList.remove('active');
 }
 console.log(watchedBtn);
 
 function onQueueClick(e) {
   e.target.setAttribute('disabled', '');
-  queueBtn.style.backgroundColor = '#ff6b01';
+  if (e.target.classList.contains('active')) {
+    return;
+  }
+
+  e.target.classList.add('active');
   queueBtn.removeAttribute('disabled');
+  watchedBtn.classList.remove('active');
 }
 console.log(queueBtn);
 // refs.start.addEventListener('click', disableStart);
