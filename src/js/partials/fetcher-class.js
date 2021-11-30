@@ -5,8 +5,12 @@ export class MoviesFetcher {
   page = 1;
   baseUrl = 'https://api.themoviedb.org/3/';
   queue = '';
+
   constructor() {}
 
+  composeGenresURL() {
+    return `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.#PRIVATE_KEY}`;
+  }
   composeMovieByIdURL(id) {
     return `${this.baseUrl}/movie/${id}?api_key=${this.#PRIVATE_KEY}`;
   }
@@ -28,11 +32,18 @@ export class MoviesFetcher {
   async searchMovie() {
     const movieArray = await axios.get(this.composeSearchURL());
     this.onEmptyQ(movieArray.data.results);
+    const genresArray = await axios.get(this.composeGenresURL());
+    // console.log(genresArray.data.genres);
+
+    // console.log(movieArray.data.results);
+    movieArray.data.results.forEach(e => {
+      // console.log(e.genre_ids);
+    });
     return movieArray.data.results;
   }
 
   async openModal(id) {
-    const movieArray = await axios.get(this.composeTrendingURL());
+    const movieArray = await axios.get(this.composeMovieByIdURL(id));
     return movieArray.data;
   }
 
@@ -40,12 +51,7 @@ export class MoviesFetcher {
 
   openLocalLib(ids) {
     ids.forEach(e => {
-      axios
-        .get(this.composeMovieById(e))
-        .then(e => {
-          console.log(e.data);
-        })
-        .catch(console.log);
+      axios.get(this.composeMovieById(e)).then(e => {});
     });
   }
 
