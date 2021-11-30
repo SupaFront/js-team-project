@@ -1,8 +1,8 @@
 
 {{#each this}}
-
 <div class="card">
 <img data-id={{this.id}} src= {{#if this.poster_path}}"https://image.tmdb.org/t/p/w500{{this.poster_path}}"{{else}}"https://picsum.photos/200/300
+
 "{{/if}}
  alt="film" />
     <p class="film-title">{{this.title}}</p>
@@ -12,5 +12,4 @@
         <p class="film-mark">{{this.vote_average}}</p>
     </div>
 </div>
-
 {{/each}}

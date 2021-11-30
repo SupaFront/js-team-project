@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+      crossorigin="anonymous"
+    />
+     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/main.scss" />
+    <title>My Library</title>
+  </head>
+  <body>
+    <header class=" header-library"> 
+       <div class="container">
+      <div class="header-wrapper">
+    <a class="header-logo-link link" href="./">
+      <svg class="header-icon">
+        <use href="./images/symbol-defs.svg#film"></use>
+      </svg>
+      <span class="header-title">Filmoteka</span>
+    </a>
+    <ul class="header-menu list">
+      <li class="header-menu-item">
+        <a class="header-item-link link" href="./">HOME</a>
+      </li>
+      <li class="header-menu-item">
+        <a class="header-item-link link current-page" href="./library.html">MY LIBRARY</a>
+      </li>
+    </ul>
+    </div>
+    <div class="nav-btns">
+        <!-- <ul class="header-menu list">
+
+          <li class="header-btns"> -->
+            <button class="watched-btn" href="">Watched</button>
+          <!-- </li>
+          <li class="header-btns"> -->
+            <button class="queue-btn" href="">Queue</button>
+          <!-- </li>
+        </ul> -->
+        </div>
+      </div>
+      </div>
+    </header>
+    <script src="./js/partials/library-buttons.js"></script>
+  </body>
+</html>
