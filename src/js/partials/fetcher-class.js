@@ -32,7 +32,7 @@ export class MoviesFetcher {
   }
 
   async openModal(id) {
-    const movieArray = await axios.get(this.composeTrendingURL());
+    const movieArray = await axios.get(this.composeMovieByIdURL(id));
     return movieArray.data;
   }
 

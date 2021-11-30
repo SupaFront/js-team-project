@@ -2,7 +2,7 @@
 {{#each this}}
 
 <div class="card">
-<img src= {{#if this.poster_path}}"https://image.tmdb.org/t/p/w500{{this.poster_path}}"{{else}}"https://picsum.photos/200/300
+<img data-id={{this.id}} src= {{#if this.poster_path}}"https://image.tmdb.org/t/p/w500{{this.poster_path}}"{{else}}"https://picsum.photos/200/300
 "{{/if}}
  alt="film" />
     <p class="film-title">{{this.title}}</p>

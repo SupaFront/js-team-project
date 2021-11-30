@@ -1,5 +1,7 @@
-<img class="poster-img" src="./images/test-img.jpg" alt="Film's poster" />
-      <div class="film-info">
+<img data-id={{id}} src= {{#if poster_path}}"https://image.tmdb.org/t/p/w500{{poster_path}}"{{else}}"https://picsum.photos/200/300
+"{{/if}}
+ alt="film" class="poster-img"/>      
+ <div class="film-info">
         <h2 class="modal-film-title">A fistful of lead</h2>
 
         <div class="info-container">
