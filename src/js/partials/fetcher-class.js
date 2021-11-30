@@ -51,7 +51,7 @@ export class MoviesFetcher {
 
   onEmptyQ(data) {
     if (data.length === 0) {
-      throw new Error('nothing is found');
+      throw new Error();
     }
   }
 }

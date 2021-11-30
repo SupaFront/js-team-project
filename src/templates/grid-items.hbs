@@ -2,7 +2,9 @@
 {{#each this}}
 
 <div class="card">
-    <img src="https://image.tmdb.org/t/p/w500/{{this.poster_path}}" alt="film" />
+<img src= {{#if this.poster_path}}"https://image.tmdb.org/t/p/w500{{this.poster_path}}"{{else}}"https://picsum.photos/200/300
+"{{/if}}
+ alt="film" />
     <p class="film-title">{{this.title}}</p>
     <div class="card-description">
         <p class="film-description">{{#each genre_ids}}{{this}}{{#unless @last}}
