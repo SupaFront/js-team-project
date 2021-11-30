@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 // import Pagination from 'tui-pagination';
 
 // const container = document.getElementById('pagination');
@@ -28,56 +27,3 @@
 //      }
 // };
 // const pagination = new Pagination(container, options);
-=======
-import Pagination from 'tui-pagination';
-import { MoviesFetcher } from './fetcher-class';
-const container = document.getElementById('pagination');
-const options = {
-     
-     itemsPerPage: 20,
-     visiblePages: 50,
-     page: 1,
-     centerAlign: true,
-     firstItemClassName: 'tui-first-child',
-     lastItemClassName: 'tui-last-child',
-     template: {
-         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-         moveButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}">' +
-                 '<span class="tui-ico-{{type}}">{{type}}</span>' +
-             '</a>',
-         disabledMoveButton:
-             '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-                 '<span class="tui-ico-{{type}}">{{type}}</span>' +
-             '</span>',
-         moreButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-                 '<span class="tui-ico-ellip">...</span>' +
-             '</a>'
-     }
-};
-const pagination = new Pagination(container, options);
-
-pagination.on('beforeMove', async evt => {
-    MoviesFetcher.page = evt.page;
-    const result = MoviesFetcher.searchMovie({ page });
-
-    let itemsQuantity;
-
-    const init = async totalV => {
-        if (totalV === undefined && !itemsQuantity) {
-            itemsQuantity = await MoviesFetcher.searchMovie();
-        }
-
-        if (totalV === undefined) { totalV = itemsQuantity.total_results; }
-
-        pagination.setTotalItems(totalV);
-        pagination.reset();
-    };
-
-    // export default {
-    //     reset: init,
-    // };
-});
->>>>>>> Stashed changes
