@@ -5,6 +5,8 @@
   padding-bottom: 97px;
   background-size: cover;
   @media screen and (max-width: 767px) {
+    padding-left: 20px;
+    padding-right: 20px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/mobile/home-header2x.jpg);
     &-title {
@@ -66,7 +68,6 @@
   }
 }
 .header-title {
-  font-weight: 500;
   font-size: 30px;
   line-height: 1.16;
 }
@@ -108,6 +109,7 @@
   border-bottom: 0.5px solid $primary-color;
   color: $primary-color;
   width: 100%;
+  font-size: 14px;
   &::placeholder {
     opacity: 1;
     color: $primary-color;
@@ -145,13 +147,3 @@
     stroke: $accent-color;
   }
 }
-// .btn-nav-list {
-//   margin-top: 50px;
-//   display: flex;
-//   justify-content: space-between;
-// }
-// .btn-nav-item {
-//   padding-top: 14px;
-//   padding-bottom: 14px;
-//   max-width: 130px;
-// }
