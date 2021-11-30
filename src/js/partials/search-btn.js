@@ -6,6 +6,7 @@ import Notiflix from 'notiflix';
 const userQueryInput = document.querySelector('input');
 const formRef = document.querySelector('form');
 const galleryRef = document.querySelector('.film-gallery');
+
 const moviesFetcher = new MoviesFetcher();
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 
@@ -20,7 +21,6 @@ async function searchMovies() {
   markupMaker.clearMarkup();
   try {
     const moviesArray = await moviesFetcher.searchMovie();
-    console.log(moviesArray);
     markupMaker.createMarkup('beforeend', moviesArray);
   } catch {
     Notiflix.Notify.failure('Nothing is found, please try again');
