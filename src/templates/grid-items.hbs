@@ -7,7 +7,7 @@
  alt="film" />
     <p class="film-title">{{this.title}}</p>
     <div class="card-description">
-        <p class="film-description">{{#each genre_ids}}{{this}}{{#unless @last}}
+        <p class="film-description">{{#each okGenres}}{{this}}{{#unless @last}},
             {{/unless}}{{/each}} | {{this.release_date}}</p>
         <p class="film-mark">{{this.vote_average}}</p>
     </div>
