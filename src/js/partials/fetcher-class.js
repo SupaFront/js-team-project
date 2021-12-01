@@ -26,25 +26,36 @@ export class MoviesFetcher {
 
   async getTrending() {
     const movieArray = await axios.get(this.composeTrendingURL());
+    await this.translateGenres(movieArray);
     return movieArray.data.results;
   }
 
   async searchMovie() {
     const movieArray = await axios.get(this.composeSearchURL());
     this.onEmptyQ(movieArray.data.results);
-    const genresArray = await axios.get(this.composeGenresURL());
-    // console.log(genresArray.data.genres);
+    await this.translateGenres(movieArray);
 
-    // console.log(movieArray.data.results);
-    movieArray.data.results.forEach(e => {
-      // console.log(e.genre_ids);
-    });
     return movieArray.data.results;
   }
 
   async openModal(id) {
     const movieArray = await axios.get(this.composeMovieByIdURL(id));
     return movieArray.data;
+  }
+
+  async translateGenres(movies) {
+    const genres = await axios.get(this.composeGenresURL());
+    movies.data.results.forEach(e => {
+      const newGenres = [];
+      genres.data.genres.forEach(ee => {
+        e.genre_ids.forEach(e => {
+          if (e == ee.id) {
+            newGenres.push(ee.name);
+          }
+        });
+      });
+      e.okGenres = newGenres;
+    });
   }
 
   //в local storage будет 2 объкта, получается 1 для q второй для watched и просто по ключу будем брать массив id и прогонять через эту функцию
