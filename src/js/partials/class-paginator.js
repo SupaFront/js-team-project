@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 class Paginator {
     constructor(container, markup, fetcher) {
         this.container = container;
@@ -35,7 +35,7 @@ totalItems: hits,
 
               if (type === 'prev') {
                 template =
-                  '<span>prev</span>'
+                  '<span class>prev</span>'
                 
               }
 
@@ -73,7 +73,8 @@ totalItems: hits,
             console.log(evt.page)
             const movies = await this.fetcher.getTrending();
             console.log(movies)
-            this.markup.createMarkup('beforeend', movies.results);
+    this.markup.createMarkup('beforeend', movies.results);
+    window.scrollTo(0, 200);
 
         });
     }
@@ -145,7 +146,7 @@ totalItems: hits,
             const movies = await this.fetcher.searchMovie();
             console.log(movies)
             this.markup.createMarkup('beforeend', movies.results);
-
+window.scrollTo(0, 200);
         });
     }
      
