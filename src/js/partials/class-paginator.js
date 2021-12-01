@@ -243,7 +243,8 @@ class Paginator {
           arr.push(load(this.q)[i]);
         }
       }
-      this.markup.createMarkup('beforeend', arr);
+        this.markup.createMarkup('beforeend', arr);
+        window.scrollTo(0, 200);
     });
   }
 
