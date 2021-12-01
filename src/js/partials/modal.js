@@ -22,10 +22,10 @@ galleryRef.addEventListener('click', e => {
 async function fetchFilmById(id) {
   const filmObj = await fetchFilm.openModal(id);
   filmMarkup.createMarkup('beforeend', filmObj);
-  openModal(id);
+  openModal(filmObj);
 }
 
-function openModal(id) {
+function openModal(obj) {
   modalBackdropEl.classList.remove('is-hidden');
 
   window.addEventListener('keydown', closeModalByEsc);
@@ -34,17 +34,17 @@ function openModal(id) {
 
   // Для кнопок внутри модалки
   const watchedBtn = cardContainerEl.querySelector('.watched');
-  watchedBtn.filmId = id;
+  watchedBtn.filmObj = obj;
   watchedBtn.localStorageKey = 'watched';
   watchedBtn.addEventListener('click', saveToLocalStorage);
 
   const queueBtn = cardContainerEl.querySelector('.queue');
-  queueBtn.filmId = id;
+  queueBtn.filmObj = obj;
   queueBtn.localStorageKey = 'queue';
   queueBtn.addEventListener('click', saveToLocalStorage);
   // Конец
 
-  localStorageCheckFn(id, watchedBtn, queueBtn);
+  localStorageCheckFn(obj, watchedBtn, queueBtn);
 }
 
 function closeModal() {
@@ -75,36 +75,42 @@ function saveToLocalStorage(evt) {
   const localStorageKey = evt.currentTarget.localStorageKey;
   let localStorageArray = [];
   const localStorageParsed = load(localStorageKey);
-  const filmId = evt.currentTarget.filmId;
+  const filmObj = evt.currentTarget.filmObj;
   const button = evt.currentTarget;
 
   if (!localStorageParsed) {
-    localStorageArray.push(filmId);
+    localStorageArray.push(filmObj);
     save(localStorageKey, localStorageArray);
     button.textContent = `Already added to ${localStorageKey}`;
     return;
   }
 
-  if (localStorageParsed.includes(filmId)) {
+  if (localStorageParsed.find(elem => elem.id === filmObj.id)) {
+    console.log('inner');
     return;
   }
 
   localStorageArray = localStorageParsed;
-  localStorageArray.push(filmId);
+  localStorageArray.push(filmObj);
   save(localStorageKey, localStorageArray);
   button.textContent = `Already added to ${localStorageKey}`;
 }
 // Конец
 
-function localStorageCheckFn(filmId, watchedBtn, queueBtn) {
+function localStorageCheckFn(filmObj, watchedBtn, queueBtn) {
   const watchedArrayParsed = load('watched');
   const queueArrayParsed = load('queue');
-  if (watchedArrayParsed.includes(filmId)) {
+
+  if (!watchedArrayParsed || !queueArrayParsed) {
+    return;
+  }
+
+  if (watchedArrayParsed.find(elem => elem.id === filmObj.id)) {
     watchedBtn.disabled = true;
     watchedBtn.textContent = 'Already added to watched';
   }
 
-  if (queueArrayParsed.includes(filmId)) {
+  if (queueArrayParsed.find(elem => elem.id === filmObj.id)) {
     queueBtn.disabled = true;
     queueBtn.textContent = 'Already added to queue';
   }
