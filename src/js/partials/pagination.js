@@ -76,7 +76,7 @@ const markup = new MarkupCreator;
 pagination.on('beforeMove', async evt => {
     movieLoad.page = evt.page;
     console.log(evt.page)
-    const movies = await movieLoad.searchMovie();
+    const movies = await movieLoad.getTrending();
     markup.createMarkup(movies.results);
 });
     let itemsQuantity;
