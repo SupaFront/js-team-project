@@ -165,9 +165,9 @@
 .original {
   text-transform: uppercase;
 }
-span {
-  color: $modal-font-color;
-}
+// span {
+//   color: $modal-font-color;
+// }
 
 .about-title {
   margin-bottom: 10px;
@@ -190,7 +190,7 @@ span {
 }
 // Конец
 
-// Кнопки
+//Кнопки
 .btn-container {
   display: flex;
   justify-content: space-between;
