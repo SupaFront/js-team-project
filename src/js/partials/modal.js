@@ -30,7 +30,7 @@ function openModal(id) {
 
   window.addEventListener('keydown', closeModalByEsc);
   closeModalBtn.addEventListener('click', closeModal);
-  // modalBackdropEl.addEventListener('click', closeModal);
+  modalBackdropEl.addEventListener('click', closeModalByBackdrop);
 
   // Для кнопок внутри модалки
   const watchedBtn = cardContainerEl.querySelector('.watched');
@@ -43,6 +43,8 @@ function openModal(id) {
   queueBtn.localStorageKey = 'queue';
   queueBtn.addEventListener('click', saveToLocalStorage);
   // Конец
+
+  localStorageCheckFn(id, watchedBtn, queueBtn);
 }
 
 function closeModal() {
@@ -51,12 +53,20 @@ function closeModal() {
 
   window.removeEventListener('keydown', closeModalByEsc);
   closeModalBtn.removeEventListener('click', closeModal);
+  modalBackdropEl.removeEventListener('click', closeModalByBackdrop);
 }
 
 function closeModalByEsc(evt) {
   if (evt.code === 'Escape') {
     closeModal();
   }
+}
+
+function closeModalByBackdrop(evt) {
+  if (!evt.target.classList.contains('modal-backdrop')) {
+    return;
+  }
+  closeModal();
 }
 // Конец
 
@@ -66,20 +76,36 @@ function saveToLocalStorage(evt) {
   let localStorageArray = [];
   const localStorageParsed = load(localStorageKey);
   const filmId = evt.currentTarget.filmId;
+  const button = evt.currentTarget;
 
   if (!localStorageParsed) {
     localStorageArray.push(filmId);
     save(localStorageKey, localStorageArray);
+    button.textContent = `Already added to ${localStorageKey}`;
     return;
   }
 
   if (localStorageParsed.includes(filmId)) {
-    alert('Такой фильм уже добавлен!');
     return;
   }
 
   localStorageArray = localStorageParsed;
   localStorageArray.push(filmId);
   save(localStorageKey, localStorageArray);
+  button.textContent = `Already added to ${localStorageKey}`;
 }
 // Конец
+
+function localStorageCheckFn(filmId, watchedBtn, queueBtn) {
+  const watchedArrayParsed = load('watched');
+  const queueArrayParsed = load('queue');
+  if (watchedArrayParsed.includes(filmId)) {
+    watchedBtn.disabled = true;
+    watchedBtn.textContent = 'Already added to watched';
+  }
+
+  if (queueArrayParsed.includes(filmId)) {
+    queueBtn.disabled = true;
+    queueBtn.textContent = 'Already added to queue';
+  }
+}
