@@ -1,7 +1,7 @@
 import markupClass from './markup-creator';
 import MoviesFetcher from './fetcher-class';
 import filmTemplate from '../../templates/modal-item.hbs';
-import { save, load } from './local-storage';
+import { save, load } from './local-storage-functions';
 
 const galleryRef = document.querySelector('.film-gallery');
 const modalBackdropEl = document.querySelector('.modal-backdrop');
