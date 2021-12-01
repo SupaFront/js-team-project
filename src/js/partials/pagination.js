@@ -1,7 +1,9 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import MarkupCreator from './markup-creator';
+import MoviesFetcher from './fetcher-class';
 const container = document.getElementById('pagination');
+
 const options = {
 totalItems:500,
      itemsPerPage: 20,
@@ -73,6 +75,7 @@ const markup = new MarkupCreator;
 // }
 pagination.on('beforeMove', async evt => {
     movieLoad.page = evt.page;
+    console.log(evt.page)
     const movies = await movieLoad.searchMovie();
     markup.createMarkup(movies.results);
 });
