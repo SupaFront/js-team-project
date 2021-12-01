@@ -21,21 +21,24 @@ export class MoviesFetcher {
   }
 
   composeTrendingURL() {
-    return `https://api.themoviedb.org/3/trending/movie/day?api_key=${this.#PRIVATE_KEY}`;
+    return `https://api.themoviedb.org/3/trending/movie/day?api_key=${this.#PRIVATE_KEY}&page=${this.page}`;
   }
 
   async getTrending() {
     const movieArray = await axios.get(this.composeTrendingURL());
+<<<<<<< HEAD
+    return movieArray.data;
+=======
     await this.translateGenres(movieArray);
     return movieArray.data.results;
+>>>>>>> dev
   }
 
   async searchMovie() {
     const movieArray = await axios.get(this.composeSearchURL());
     this.onEmptyQ(movieArray.data.results);
     await this.translateGenres(movieArray);
-
-    return movieArray.data.results;
+    return movieArray.data;
   }
 
   async openModal(id) {
