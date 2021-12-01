@@ -26,12 +26,8 @@ export class MoviesFetcher {
 
   async getTrending() {
     const movieArray = await axios.get(this.composeTrendingURL());
-<<<<<<< HEAD
-    return movieArray.data;
-=======
     await this.translateGenres(movieArray);
-    return movieArray.data.results;
->>>>>>> dev
+    return movieArray.data;
   }
 
   async searchMovie() {
