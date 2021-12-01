@@ -30,6 +30,7 @@ function openModal(id) {
 
   window.addEventListener('keydown', closeModalByEsc);
   closeModalBtn.addEventListener('click', closeModal);
+  // modalBackdropEl.addEventListener('click', closeModal);
 
   // Для кнопок внутри модалки
   const watchedBtn = cardContainerEl.querySelector('.watched');
@@ -57,7 +58,6 @@ function closeModalByEsc(evt) {
     closeModal();
   }
 }
-
 // Конец
 
 // Логика для кнопок внутри модалки
