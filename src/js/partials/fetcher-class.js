@@ -26,7 +26,7 @@ export class MoviesFetcher {
 
   async getTrending() {
     const movieArray = await axios.get(this.composeTrendingURL());
-    return movieArray.data.results;
+    return movieArray.data;
   }
 
   async searchMovie() {
@@ -34,12 +34,13 @@ export class MoviesFetcher {
     this.onEmptyQ(movieArray.data.results);
     const genresArray = await axios.get(this.composeGenresURL());
     // console.log(genresArray.data.genres);
+    console.log(movieArray)
 
     // console.log(movieArray.data.results);
     movieArray.data.results.forEach(e => {
       // console.log(e.genre_ids);
     });
-    return movieArray.data.results;
+    return movieArray.data;
   }
 
   async openModal(id) {
