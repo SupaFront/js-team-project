@@ -167,9 +167,8 @@ function saveToQueue(evt) {
   button.textContent = `Remove from queue`;
 }
 
-<<<<<<< Updated upstream
 // Логика для проверки локального хранилища
-function watchedCheckFn(filmObj, watchedBtn) {
+function watchedCheckFn(filmObj, button) {
   const watchedArrayParsed = load('watched');
 
   if (!watchedArrayParsed) {
@@ -177,17 +176,14 @@ function watchedCheckFn(filmObj, watchedBtn) {
   }
 
   if (watchedArrayParsed.find(elem => elem.id === filmObj.id)) {
-    watchedBtn.textContent = 'Already added to watched';
-    watchedBtn.addEventListener('click', removeFromWatched);
+    button.textContent = 'Already added to watched';
+    button.addEventListener('click', removeFromWatched);
 
     return;
   }
 }
 
-function queueCheckFn(filmObj, queueBtn) {
-=======
 function queueCheckFn(filmObj, button) {
->>>>>>> Stashed changes
   const queueArrayParsed = load('queue');
 
   if (!queueArrayParsed) {
