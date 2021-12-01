@@ -134,7 +134,8 @@
   line-height: 1.33;
 }
 
-.left-side-info {
+.left-side-info,
+.slash {
   color: $modal-font-color;
 
   & > p:not(:last-child) {
@@ -155,6 +156,16 @@
   }
 }
 
+.genres {
+  color: $secondary-color;
+}
+
+.genres:not(:last-child)::after {
+  content: '/';
+  padding-left: 5px;
+  color: $modal-font-color;
+}
+
 .mark {
   padding: 0 5px;
   border-radius: 5px;
@@ -165,9 +176,7 @@
 .original {
   text-transform: uppercase;
 }
-// span {
-//   color: $modal-font-color;
-// }
+
 
 .about-title {
   margin-bottom: 10px;
@@ -201,35 +210,39 @@
   }
 }
 
-button {
+.modal-btn {
   padding: 0 7px;
   height: 44px;
+  border: 1px solid $secondary-color;
   border-radius: 5px;
 
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   text-transform: uppercase;
+
+  color: $secondary-color;
+  background-color: transparent;
+
+  &:hover {
+    border-color: transparent;
+    color: $primary-color;
+    background-color: $accent-color;
+  }
 }
 
-.watched-btn {
+.watched,
+.queue {
   width: calc(100% / 2 - 7.5px);
 
-  border-color: transparent;
-  color: $primary-color;
-  background-color: $accent-color;
   @media screen and (min-width: 1024px) {
     width: 136px;
   }
 }
-.queue-btn {
-  width: calc(100% / 2 - 7.5px);
 
-  border: 1px solid $secondary-color;
-  color: $secondary-color;
+.queue {
   @media screen and (min-width: 1024px) {
     margin-left: 15px;
-    width: 136px;
   }
 }
 

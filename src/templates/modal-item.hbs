@@ -2,7 +2,7 @@
 "{{/if}}
  alt="film" class="poster-img"/>      
  <div class="film-info">
-        <h2 class="modal-film-title">A fistful of lead</h2>
+        <h2 class="modal-film-title">{{title}}</h2>
 
         <div class="info-container">
           <div class="left-side-info">
@@ -13,23 +13,20 @@
           </div>
 
           <div class="right-side-info">
-            <p><span class="mark">7.3</span><span> / </span>1260</p>
-            <p>100.2</p>
-            <p class="original">A fistful of lead</p>
-            <p>Western</p>
+            <p><span class="mark">{{vote_average}}</span><span class="slash"> / </span>{{vote_count}}</p>
+            <p>{{popularity}}</p>
+            <p class="original">{{original_title}}</p>
+            <p>
+              {{#each genres}}
+              <span class="genres">{{this.name}}</span>
+              {{/each}}
+            </p>
           </div>
         </div>
 
         <h3 class="about-title">About</h3>
-        <p class="about-text">
-          Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the
-          most corrupt settlement of the gold rush towns. But not all goes to plan one is killed and
-          the other three escapes with bags of gold hide out in the abandoned gold mine where they
-          happen across another gang of three – who themselves were planning to hit the very same
-          bank! As tensions rise, things go from bad to worse as they realise the bags of gold are
-          filled with lead... they’ve been double crossed – but by who and how?
-        </p>
+        <p class="about-text">{{overview}}</p>
         <div class="btn-container">
-          <button class="watched-btn" type="button">add to Watched</button>
-          <button class="queue-btn" type="button">add to queue</button>
+          <button class="modal-btn watched" type="button">add to Watched</button>
+          <button class="modal-btn queue" type="button">add to queue</button>
         </div>
