@@ -135,8 +135,9 @@ function watchedCheckFn(filmObj, watchedBtn) {
   }
 
   if (watchedArrayParsed.find(elem => elem.id === filmObj.id)) {
-    watchedBtn.disabled = true;
     watchedBtn.textContent = 'Already added to watched';
+    watchedBtn.addEventListener('click', removeFromWatched);
+
     return;
   }
 }
@@ -154,6 +155,23 @@ function queueCheckFn(filmObj, queueBtn) {
     return;
   }
 }
+function removeFromWatched(evt) {
+  const localStorageParsed = load('watched');
+  const filmObj = evt.currentTarget.filmObj;
+  const button = evt.currentTarget;
+
+  if (localStorageParsed.length === 1) {
+    remove('watched');
+  }
+
+  if (localStorageParsed.find(elem => elem.id === filmObj.id)) {
+    button.textContent = 'Already added to watched';
+    const index = localStorageParsed.findIndex(item => item.id === filmObj.id);
+    localStorageParsed.splice(index, 1);
+    save('watched', localStorageParsed);
+    button.textContent = 'Add to watched';
+  }
+}
 
 function removeFromQueue(evt) {
   const localStorageParsed = load('queue');
@@ -162,7 +180,6 @@ function removeFromQueue(evt) {
 
   if (localStorageParsed.length === 1) {
     remove('queue');
-    console.log('test');
   }
 
   if (localStorageParsed.find(elem => elem.id === filmObj.id)) {
