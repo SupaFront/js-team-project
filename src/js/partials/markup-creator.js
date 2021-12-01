@@ -5,11 +5,11 @@ class MarkupCreator {
     this.fetcher = fetcher;
   }
 
-  createMarkup(position, items) {
+ createMarkup(position, items) {
     this.area.insertAdjacentHTML(position, this.template(items));
   }
 
-  clearMarkup() {
+ clearMarkup() {
     this.area.innerHTML = '';
     this.fetcher.page = 1;
   }
