@@ -11,6 +11,7 @@ const moviesFetcher = new MoviesFetcher();
 const btnPopularByDay = document.querySelector('.js-by-day');
 const btnPopularByWeek = document.querySelector('.js-by-week');
 
+const pagEl = document.getElementById('pagination')
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 
 async function loadTrending(timeWindow) {
@@ -23,6 +24,8 @@ async function loadTrending(timeWindow) {
     pagination.paginateTrending(movieArray.total_results);
   } catch (e) {
     Notify.failure(`Something went wrong ${e}`);
+
+
   }
 }
 
