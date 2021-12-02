@@ -21,6 +21,8 @@ watchedBtn.addEventListener('click', event => {
     const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
     pagination.paginateLib(load('watched').length);
     text.classList.add('hide-content');
+  } else {
+    text.classList.remove('hide-content');
   }
 });
 queueBtn.addEventListener('click', event => {
@@ -31,6 +33,8 @@ queueBtn.addEventListener('click', event => {
     const pagination = new Paginator(container, markup, moviesFetcher, 'queue');
     pagination.paginateLib(load('queue').length);
     text.classList.add('hide-content');
+  } else {
+    text.classList.remove('hide-content');
   }
 });
 
@@ -39,4 +43,6 @@ if (load('watched') !== undefined) {
   const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
   pagination.paginateLib(load('watched').length);
   text.classList.add('hide-content');
+} else {
+  text.classList.remove('hide-content');
 }
