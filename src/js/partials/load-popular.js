@@ -27,11 +27,19 @@ async function loadTrending(timeWindow) {
 }
 
 btnPopularByWeek.addEventListener('click', e => {
-  loadTrending('week')
+  loadTrending('week');
+  // btnPopularByWeek.disabled = true;
+  btnPopularByWeek.classList.add('active');
+  btnPopularByDay.classList.remove('active');
+  // btnPopularByDay.disabled = false;
 })
 
 btnPopularByDay.addEventListener('click', e => {
-  loadTrending('day')
+  loadTrending('day');
+  // btnPopularByDay.disabled = true;
+  btnPopularByDay.classList.add('active');
+  btnPopularByWeek.classList.remove('active');
+  // btnPopularByWeek.disabled = false;
 })
 
 loadTrending('day');
