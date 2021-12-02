@@ -16,6 +16,8 @@ a {
   border: 1px solid $primary-color;
   background: rgba(0, 0, 0, 0.56);
   color: $primary-color;
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-title__library {
@@ -26,7 +28,6 @@ a {
 .watched-btn:focus {
   background-color: $accent-color;
   border: $accent-color;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .queue-btn {
@@ -35,12 +36,14 @@ a {
   border: 1px solid;
   background: rgba(0, 0, 0, 0.56);
   color: $primary-color;
+
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .queue-btn:hover,
 .queue-btn:focus {
   background-color: $accent-color;
   border: $accent-color;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .active {
@@ -55,6 +58,7 @@ a {
   cursor: pointer;
   stroke: $logo-fill-color;
   margin-right: 12px;
+  transition: stroke 500ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (max-width: 767px) {
     &:hover,
     &:focus {
@@ -135,13 +139,13 @@ a {
 }
 .header-item-link {
   position: relative;
-  //transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-item-link:hover,
 .header-item-link:focus {
   color: $accent-color;
 }
-.current-page::after {
+.current::after {
   position: absolute;
   content: '';
   width: 100%;
