@@ -8,9 +8,11 @@ const userQueryInput = document.querySelector('input');
 const formRef = document.querySelector('form');
 const galleryRef = document.querySelector('.film-gallery');
 const container = document.getElementById('pagination');
+const loader = document.querySelector('#loader');
 
 const moviesFetcher = new MoviesFetcher();
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
+const popularBtnsEl = document.querySelector('.btns-wrapper');
 
 formRef.addEventListener('submit', e => {
   e.preventDefault();
@@ -21,6 +23,8 @@ formRef.addEventListener('submit', e => {
 
 async function searchMovies() {
   markupMaker.clearMarkup();
+  popularBtnsEl.remove();
+  loader.classList.remove('disappear');
   try {
     const moviesArray = await moviesFetcher.searchMovie();
     markupMaker.createMarkup('beforeend', moviesArray.results);
@@ -33,5 +37,8 @@ async function searchMovies() {
     Notiflix.Notify.failure('Nothing is found, please try again');
     container.classList.add('hidden')
     container.classList.remove('tui-pagination')
+  } finally {
+    loader.classList.add('disappear');
+
   }
 }
