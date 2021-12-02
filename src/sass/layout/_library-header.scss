@@ -191,3 +191,26 @@ a {
   align-items: center;
   margin-top: 45px;
 }
+
+.library-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 45px;
+}
+.empty-page {
+  font-family: $main-font;
+  font-style: 900;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: $footer-text-color;
+}
+
+.hide-content {
+  display: none;
+}
