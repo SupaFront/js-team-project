@@ -9,6 +9,7 @@ const formRef = document.querySelector('form');
 const galleryRef = document.querySelector('.film-gallery');
 const container = document.getElementById('pagination');
 const loader = document.querySelector('#loader');
+
 const moviesFetcher = new MoviesFetcher();
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 const popularBtnsEl = document.querySelector('.btns-wrapper');
