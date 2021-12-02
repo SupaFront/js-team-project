@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
      <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./sass/main.scss" />
@@ -45,15 +45,20 @@
 
       </div>
     </header>
-   <main>
+    <div class="library-empty">
+      <p class="empty-page ">Your collection is empty...</p>
+   </div>
+   <main class="filled">
 
+<include src="./partials/gallery.html"></include>
+<include src="./partials/modal.html"></include>
 
-   <include src="./partials/gallery.html"></include>
     
    </main>
-     <include src="./partials/footer.html"></include> 
-    <script src="./js/partials/library-buttons.js"></script>
-    <script src="./js/partials/load-local-storage.js"></script>
+   <include src="./partials/footer.html"></include> 
+   <script src="./js/partials/library-buttons.js"></script>
+   <script src="./js/partials/load-local-storage.js"></script>
+   <script src="./js/partials/modal.js"></script>
 
   </body>
 </html>
