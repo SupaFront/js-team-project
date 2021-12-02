@@ -21,7 +21,10 @@ async function loadTrending(timeWindow) {
     pagination.paginateTrending(movieArray.total_results);
   } catch (e) {
     Notify.failure(`Something went wrong ${e}`);
-    
+
+  } finally {
+    loader.classList.add('disappear')
+
 
   }
 }
