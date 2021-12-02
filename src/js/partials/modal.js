@@ -61,7 +61,7 @@ function closeModal() {
   modalBackdropEl.removeEventListener('click', closeModalByBackdrop);
 
   const bodyEl = document.querySelector('body');
-  bodyEl.style.overflow = 'scroll';
+  bodyEl.style.overflow = 'auto';
 }
 
 function closeModalByEsc(evt) {
@@ -78,17 +78,19 @@ function closeModalByBackdrop(evt) {
 }
 // Конец
 
-// Логика для кнопок внутри модалки
+// Логика для кнопки watched
 function saveToWatched(evt) {
   let localStorageArray = [];
   const localStorageParsed = load('watched');
   const filmObj = evt.currentTarget.filmObj;
   const button = evt.currentTarget;
+  button.addEventListener('click', removeFromWatched);
+  button.removeEventListener('click', saveToWatched);
 
   if (!localStorageParsed) {
     localStorageArray.push(filmObj);
     save('watched', localStorageArray);
-    button.textContent = `Already added to watched`;
+    button.textContent = `Remove from watched`;
     return;
   }
 
@@ -99,14 +101,55 @@ function saveToWatched(evt) {
   localStorageArray = localStorageParsed;
   localStorageArray.push(filmObj);
   save('watched', localStorageArray);
-  button.textContent = `Already added to watched`;
+  button.textContent = `Remove from watched`;
 }
 
+function watchedCheckFn(filmObj, button) {
+  const watchedArrayParsed = load('watched');
+
+  if (!watchedArrayParsed) {
+    return;
+  }
+
+  if (watchedArrayParsed.find(elem => elem.id === filmObj.id)) {
+    button.textContent = 'Remove from watched';
+    button.addEventListener('click', removeFromWatched);
+    button.removeEventListener('click', saveToWatched);
+
+    return;
+  }
+}
+
+function removeFromWatched(evt) {
+  const localStorageParsed = load('watched');
+  const filmObj = evt.currentTarget.filmObj;
+  const button = evt.currentTarget;
+  button.addEventListener('click', saveToWatched);
+  button.removeEventListener('click', removeFromWatched);
+
+  if (localStorageParsed.length === 1) {
+    remove('watched');
+  }
+
+  if (localStorageParsed.find(elem => elem.id === filmObj.id)) {
+    button.textContent = 'Remove from watched';
+    const index = localStorageParsed.findIndex(item => item.id === filmObj.id);
+    localStorageParsed.splice(index, 1);
+    save('watched', localStorageParsed);
+    button.textContent = 'Add to watched';
+  }
+}
+
+// Конец
+
+// Логика для кнопки queue
 function saveToQueue(evt) {
   let localStorageArray = [];
   const localStorageParsed = load('queue');
   const filmObj = evt.currentTarget.filmObj;
   const button = evt.currentTarget;
+  button.addEventListener('click', removeFromQueue);
+  button.removeEventListener('click', saveToQueue);
 
   if (!localStorageParsed) {
     localStorageArray.push(filmObj);
@@ -124,24 +167,8 @@ function saveToQueue(evt) {
   save('queue', localStorageArray);
   button.textContent = `Remove from queue`;
 }
-// Конец
 
-// Логика для проверки локального хранилища
-function watchedCheckFn(filmObj, watchedBtn) {
-  const watchedArrayParsed = load('watched');
-
-  if (!watchedArrayParsed) {
-    return;
-  }
-
-  if (watchedArrayParsed.find(elem => elem.id === filmObj.id)) {
-    watchedBtn.disabled = true;
-    watchedBtn.textContent = 'Already added to watched';
-    return;
-  }
-}
-
-function queueCheckFn(filmObj, queueBtn) {
+function queueCheckFn(filmObj, button) {
   const queueArrayParsed = load('queue');
 
   if (!queueArrayParsed) {
@@ -149,8 +176,9 @@ function queueCheckFn(filmObj, queueBtn) {
   }
 
   if (queueArrayParsed.find(elem => elem.id === filmObj.id)) {
-    queueBtn.textContent = 'Remove from queue';
-    queueBtn.addEventListener('click', removeFromQueue);
+    button.textContent = 'Remove from queue';
+    button.addEventListener('click', removeFromQueue);
+    button.removeEventListener('click', saveToQueue);
     return;
   }
 }
@@ -159,10 +187,11 @@ function removeFromQueue(evt) {
   const localStorageParsed = load('queue');
   const filmObj = evt.currentTarget.filmObj;
   const button = evt.currentTarget;
+  button.addEventListener('click', saveToQueue);
+  button.removeEventListener('click', removeFromQueue);
 
   if (localStorageParsed.length === 1) {
     remove('queue');
-    console.log('test');
   }
 
   if (localStorageParsed.find(elem => elem.id === filmObj.id)) {
