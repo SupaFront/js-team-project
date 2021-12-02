@@ -14,7 +14,7 @@ const markup = new MarkupCreator(galleryRef, filmTemplate, moviesFetcher);
 
 watchedBtn.addEventListener('click', event => {
   markup.clearMarkup();
-
+  container.innerText = '';
   if (load('watched') !== undefined) {
     markup.createMarkup('beforeend', load('watched'));
     const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
@@ -23,7 +23,7 @@ watchedBtn.addEventListener('click', event => {
 });
 queueBtn.addEventListener('click', event => {
   markup.clearMarkup();
-
+  container.innerText = '';
   if (load('queue') !== undefined) {
     markup.createMarkup('beforeend', load('queue'));
     const pagination = new Paginator(container, markup, moviesFetcher, 'queue');
