@@ -15,10 +15,17 @@
 }
 
 .card {
+  cursor: pointer;
   flex-basis: calc((100% - 30px * var(--grid-item)) / var(--grid-item));
   margin-left: 30px;
   margin-top: 30px;
   --grid-item: 1;
+}
+.card:hover,
+.card:focus {
+  scale: 1.05;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
 
 @media screen and (min-width: 768px) {
@@ -26,7 +33,7 @@
     --grid-item: 2;
   }
   .film-gallery {
-    padding-top: 60px;
+    padding-top: 20px;
   }
 }
 
@@ -117,24 +124,34 @@
   font-size: 0;
   margin-bottom: 10px;
 }
-
-.huy {
-  .tui-page-btn {
-    display: inline-block;
-    position: relative;
-    width: 35px;
-    height: 35px;
-    padding: 10px 0 6px;
-    margin-left: 0;
-    color: #000;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1;
-    text-decoration: none;
-    vertical-align: middle;
-    border: 1px solid #fff;
-    border-width: 1px 0;
-    text-align: center;
-    border-radius: 5px;
+//buttons treding
+.btns-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 20px;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
   }
+}
+.btns-title {
+  margin-right: 15px;
+}
+
+.btns-popular {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-popular {
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #ffffff;
+}
+.btn-popular:hover,
+.btn-popular:focus {
+  background-color: $accent-color;
 }

@@ -93,7 +93,7 @@
 .header-item-link:focus {
   color: $accent-color;
 }
-.current-page::after {
+.current::after {
   position: absolute;
   content: '';
   width: 100%;
@@ -111,6 +111,7 @@
   color: $primary-color;
   width: 100%;
   font-size: 14px;
+  outline: none;
   &::placeholder {
     opacity: 1;
     color: $primary-color;
