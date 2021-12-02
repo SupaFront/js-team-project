@@ -8,6 +8,8 @@ import Paginator from './class-paginator';
 const galleryRef = document.querySelector('.film-gallery');
 const container = document.getElementById('pagination');
 const moviesFetcher = new MoviesFetcher();
+const btnPopularByDay = document.querySelector('.js-by-day');
+const btnPopularByWeek = document.querySelector('.js-by-week');
 
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 
@@ -24,12 +26,12 @@ async function loadTrending(timeWindow) {
   }
 }
 
-// btnWeek.addEventLisntener('click', e => {
-//   loadTrending('week')
-// })
+btnPopularByWeek.addEventListener('click', e => {
+  loadTrending('week')
+})
 
-// btnDay.addEventLisntener('click', e => {
-//   loadTrending('day')
-// })
+btnPopularByDay.addEventListener('click', e => {
+  loadTrending('day')
+})
 
 loadTrending('day');
