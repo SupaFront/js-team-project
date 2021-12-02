@@ -4,14 +4,17 @@ import markupClass from './markup-creator';
 import { Notify } from 'notiflix';
 import Paginator from './class-paginator';
 
-const moviesFetcher = new MoviesFetcher();
+//добавить конст кнопок
 const galleryRef = document.querySelector('.film-gallery');
 const container = document.getElementById('pagination');
+const moviesFetcher = new MoviesFetcher();
 
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 
-async function loadTrending() {
+async function loadTrending(timeWindow) {
+  markupMaker.clearMarkup();
   try {
+    moviesFetcher.timeWindow = timeWindow;
     const movieArray = await moviesFetcher.getTrending();
     markupMaker.createMarkup('beforeend', movieArray.results);
     const pagination = new Paginator(container, markupMaker, moviesFetcher);
@@ -21,4 +24,12 @@ async function loadTrending() {
   }
 }
 
-loadTrending();
+// btnWeek.addEventLisntener('click', e => {
+//   loadTrending('week')
+// })
+
+// btnDay.addEventLisntener('click', e => {
+//   loadTrending('day')
+// })
+
+loadTrending('day');

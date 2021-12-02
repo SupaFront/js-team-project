@@ -5,6 +5,7 @@ export class MoviesFetcher {
   page = 1;
   baseUrl = 'https://api.themoviedb.org/3/';
   queue = '';
+  timeWindow = 'day';
 
   constructor() {}
 
@@ -21,7 +22,9 @@ export class MoviesFetcher {
   }
 
   composeTrendingURL() {
-    return `https://api.themoviedb.org/3/trending/movie/day?api_key=${this.#PRIVATE_KEY}&page=${this.page}`;
+    return `https://api.themoviedb.org/3/trending/movie/${this.timeWindow}?api_key=${
+      this.#PRIVATE_KEY
+    }&page=${this.page}`;
   }
 
   async getTrending() {
