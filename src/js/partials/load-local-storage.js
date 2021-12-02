@@ -9,6 +9,7 @@ const watchedBtn = document.querySelector('.watched-btn');
 const queueBtn = document.querySelector('.queue-btn');
 const galleryRef = document.querySelector('.film-gallery');
 const moviesFetcher = new MoviesFetcher();
+const text = document.querySelector('.empty-page');
 
 const markup = new MarkupCreator(galleryRef, filmTemplate, moviesFetcher);
 
@@ -19,6 +20,7 @@ watchedBtn.addEventListener('click', event => {
     markup.createMarkup('beforeend', load('watched'));
     const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
     pagination.paginateLib(load('watched').length);
+    text.classList.add('hide-content');
   }
 });
 queueBtn.addEventListener('click', event => {
@@ -28,6 +30,7 @@ queueBtn.addEventListener('click', event => {
     markup.createMarkup('beforeend', load('queue'));
     const pagination = new Paginator(container, markup, moviesFetcher, 'queue');
     pagination.paginateLib(load('queue').length);
+    text.classList.add('hide-content');
   }
 });
 
@@ -35,4 +38,5 @@ if (load('watched') !== undefined) {
   markup.createMarkup('beforeend', load('watched'));
   const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
   pagination.paginateLib(load('watched').length);
+  text.classList.add('hide-content');
 }
