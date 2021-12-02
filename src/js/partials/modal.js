@@ -7,7 +7,7 @@ const galleryRef = document.querySelector('.film-gallery');
 const modalBackdropEl = document.querySelector('.modal-backdrop');
 const closeModalBtn = document.querySelector('.modal-cls-btn');
 const cardContainerEl = document.querySelector('.card-container');
-
+const scrollBtn = document.querySelector('.back_to_top')
 const fetchFilm = new MoviesFetcher();
 const filmMarkup = new markupClass(cardContainerEl, filmTemplate, fetchFilm);
 
@@ -27,7 +27,6 @@ async function fetchFilmById(id) {
 
 function openModal(obj) {
   modalBackdropEl.classList.remove('is-hidden');
-
   // Бэкдроп не скролится
   const bodyEl = document.querySelector('body');
   bodyEl.style.overflow = 'hidden';
@@ -36,6 +35,7 @@ function openModal(obj) {
   window.addEventListener('keydown', closeModalByEsc);
   closeModalBtn.addEventListener('click', closeModal);
   modalBackdropEl.addEventListener('click', closeModalByBackdrop);
+      scrollBtn.classList.remove('back_to_top-show');
 
   // Для кнопок внутри модалки
   const watchedBtn = cardContainerEl.querySelector('.watched');
@@ -62,6 +62,7 @@ function closeModal() {
 
   const bodyEl = document.querySelector('body');
   bodyEl.style.overflow = 'auto';
+  scrollBtn.classList.add('back_to_top-show');
 }
 
 function closeModalByEsc(evt) {
