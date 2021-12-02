@@ -1,4 +1,5 @@
 import Pagination from 'tui-pagination';
+// import 'tui-pagination/dist/tui-pagination.css';
 
 import { load } from './local-storage-functions';
 
@@ -31,29 +32,36 @@ class Paginator {
 
             if (type === 'next') {
                 template =
-                  '<span>next</span>'
+                  '<span id="next" class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
                 
               }
+
+              
+            //   if (type === 'first') {
+            //     template =
+            //       '<span>first</span>'
+                
+            //   }
 
               if (type === 'prev') {
                 template =
-                  '<span class>prev</span>'
+                  '<span class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
                 
               }
 
-              if (type === 'last') {
-                template =
-                  `<span class="inner-page-number">${lastPage}</span>`
+              // if (type === 'last') {
+              //   template =
+              //     `<span class="inner-page-number">${lastPage}</span>`
                 
-              }
+              // }
 
 
 
-              if (type === 'first') {
-                  
-                template =
-                  `<span class="inner-page-number">1</span>`
-              }
+              // if (type === 'first') {
+              //     if(true){}
+              //   template =
+              //     `<span class="inner-page-number">1</span>`
+              // }
 
 
 
@@ -66,15 +74,15 @@ class Paginator {
              '</span>',
          moreButton:
              '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-                 '<span class="tui-ico-ellip">...</span>' +
+                 `<span class="tui-ico-ellip">...</span>` +
              '</a>'
      }
 }).on('beforeMove', async evt => {
             this.markup.clearMarkup();
             this.fetcher.page = evt.page;
-            console.log(evt.page)
+            
             const movies = await this.fetcher.getTrending();
-            console.log(movies)
+            
     this.markup.createMarkup('beforeend', movies.results);
     window.scrollTo(0, 200);
 
@@ -82,60 +90,80 @@ class Paginator {
     }
 
 
-    paginateSearch(hits) {
-        new Pagination(this.container, {
-            totalItems: hits,
-            itemsPerPage: 20,
-            visiblePages: 5,
-            page: 1,
-            centerAlign: true,
-            firstItemClassName: 'tui-first-child',
-            lastItemClassName: 'tui-last-child',
-            template: {
+  //   paginateSearch(hits) {
+  //       new Pagination(this.container, {
+  //           totalItems: hits,
+  //           itemsPerPage: 20,
+  //           visiblePages: 5,
+  //           page: 1,
+  //           centerAlign: true,
+  //           firstItemClassName: 'tui-first-child',
+  //           lastItemClassName: 'tui-last-child',
+  //           template: {
         
-                page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-                currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-                moveButton: ({ type }) => {
+  //               page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+  //               currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+  //               moveButton: ({ type }) => {
              
-          let lastPage = hits / 20;
-          let template = ' ';
+  //         let lastPage = hits / 20;
+  //         let template = ' ';
 
-          if (type === 'next') {
-            template = '<span>next</span>';
-          }
+  //           if (type === 'next') {
+  //               template =
+  //                 '<span id="next" class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+                
+  //             }
 
-          if (type === 'prev') {
-            template = '<span>prev</span>';
-          }
+              
+  //           //   if (type === 'first') {
+  //           //     template =
+  //           //       '<span>first</span>'
+                
+  //           //   }
 
-          if (type === 'last') {
-            template = `<span class="inner-page-number">${lastPage}</span>`;
-          }
+  //             if (type === 'prev') {
+  //               template =
+  //                 '<span class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+                
+  //             }
 
-          if (type === 'first') {
-            template = `<span class="inner-page-number">1</span>`;
-          }
+  //             if (type === 'last') {
+  //               template =
+  //                 `<span class="inner-page-number">${lastPage}</span>`
+                
+  //             }
 
-          return template;
-        },
-        disabledMoveButton:
-          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
-          '</span>',
-        moreButton:
-          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-          '<span class="tui-ico-ellip">...</span>' +
-          '</a>',
-      },
-    }).on('beforeMove', async evt => {
-      this.markup.clearMarkup();
-      this.fetcher.page = evt.page;
-      console.log(evt.page);
-      const movies = await this.fetcher.getTrending();
-      console.log(movies);
-      this.markup.createMarkup('beforeend', movies.results);
-    });
-  }
+
+
+  //             if (type === 'first') {
+  //                 if(true){}
+  //               template =
+  //                 `<span class="inner-page-number">1</span>`
+  //             }
+
+
+
+        
+  //           return template;
+  //         },
+  //       disabledMoveButton:
+  //         '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+  //         '<span class="tui-ico-{{type}}">{{type}}</span>' +
+  //         '</span>',
+  //       moreButton:
+  //         '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+  //         '<span class="tui-ico-ellip">...</span>' +
+  //         '</a>',
+  //     },
+  //   }).on('beforeMove', async evt => {
+  //     this.markup.clearMarkup();
+  //     this.fetcher.page = evt.page;
+  //     console.log(evt.page);
+  //     const movies = await this.fetcher.getTrending();
+  //     console.log(movies);
+  //     this.markup.createMarkup('beforeend', movies.results);
+  //   });
+  // }
 
   paginateSearch(hits) {
     new Pagination(this.container, {
@@ -161,13 +189,13 @@ class Paginator {
             template = '<span>prev</span>';
           }
 
-          if (type === 'last') {
-            template = `<span class="inner-page-number">${lastPage}</span>`;
-          }
+          // if (type === 'last') {
+          //   template = `<span class="inner-page-number">${lastPage}</span>`;
+          // }
 
-          if (type === 'first') {
-            template = `<span class="inner-page-number">1</span>`;
-          }
+          // if (type === 'first') {
+          //   template = `<span class="inner-page-number">1</span>`;
+          // }
 
           return template;
         },
@@ -206,24 +234,44 @@ class Paginator {
           let lastPage = hits / 20;
           let template = ' ';
 
-          if (type === 'next') {
-            template = '<span>next</span>';
-          }
+            if (type === 'next') {
+                template =
+                  '<span id="next" class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+                
+              }
 
-          if (type === 'prev') {
-            template = '<span>prev</span>';
-          }
+              
+            //   if (type === 'first') {
+            //     template =
+            //       '<span>first</span>'
+                
+            //   }
 
-          if (type === 'last') {
-            template = `<span class="inner-page-number">${lastPage}</span>`;
-          }
+              if (type === 'prev') {
+                template =
+                  '<span class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+                
+              }
 
-          if (type === 'first') {
-            template = `<span class="inner-page-number">1</span>`;
-          }
+              // if (type === 'last') {
+              //   template =
+              //     `<span class="inner-page-number">${lastPage}</span>`
+                
+              // }
 
-          return template;
-        },
+
+
+              // if (type === 'first') {
+              //     if(true){}
+              //   template =
+              //     `<span class="inner-page-number">1</span>`
+              // }
+
+
+
+        
+            return template;
+          },
         disabledMoveButton:
           '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
           '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -234,7 +282,7 @@ class Paginator {
           '</a>',
       },
     }).on('beforeMove', async evt => {
-      console.log(this.q);
+      
       let perPage = evt.page * 20;
       this.markup.clearMarkup();
       const arr = [];
