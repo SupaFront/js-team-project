@@ -10,7 +10,9 @@ export const save = (key, value) => {
 export const load = key => {
   try {
     const stringifyValue = localStorage.getItem(key);
-    return stringifyValue === null ? undefined : JSON.parse(stringifyValue);
+    return stringifyValue === null || stringifyValue === '[]'
+      ? undefined
+      : JSON.parse(stringifyValue);
   } catch (error) {
     console.error(error.message);
   }
