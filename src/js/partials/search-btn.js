@@ -27,9 +27,15 @@ async function searchMovies() {
     markupMaker.createMarkup('beforeend', moviesArray.results);
     const pagination = new Paginator(container, markupMaker, moviesFetcher);
     pagination.paginateSearch(moviesArray.total_results);
+    container.classList.remove('hidden')
+    container.classList.add('tui-pagination')
+
   } catch {
     Notiflix.Notify.failure('Nothing is found, please try again');
+      container.classList.add('hidden')
+    container.classList.remove('tui-pagination')
   } finally {
     loader.classList.add('disappear');
+  
   }
 }

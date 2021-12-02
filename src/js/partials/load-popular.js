@@ -8,7 +8,7 @@ import Paginator from './class-paginator';
 const galleryRef = document.querySelector('.film-gallery');
 const container = document.getElementById('pagination');
 const moviesFetcher = new MoviesFetcher();
-
+const pagEl = document.getElementById('pagination')
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 
 async function loadTrending(timeWindow) {
@@ -24,6 +24,7 @@ async function loadTrending(timeWindow) {
 
   } finally {
     loader.classList.add('disappear')
+
 
   }
 }
