@@ -8,41 +8,30 @@ const container = document.getElementById('pagination');
 const watchedBtn = document.querySelector('.watched-btn');
 const queueBtn = document.querySelector('.queue-btn');
 const galleryRef = document.querySelector('.film-gallery');
-const moviesFetcher = new MoviesFetcher();
 const text = document.querySelector('.empty-page');
 
+const moviesFetcher = new MoviesFetcher();
 const markup = new MarkupCreator(galleryRef, filmTemplate, moviesFetcher);
 
-watchedBtn.addEventListener('click', event => {
-  markup.clearMarkup();
+watchedBtn.addEventListener('click', () => {
+  loadFromStorage('watched');
+});
 
-  if (load('watched') !== undefined) {
-    markup.createMarkup('beforeend', load('watched'));
-    const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
-    pagination.paginateLib(load('watched').length);
+queueBtn.addEventListener('click', () => {
+  loadFromStorage('queue');
+});
+
+function loadFromStorage(q) {
+  markup.clearMarkup();
+  container.innerHTML = '';
+  if (load(q) !== undefined) {
+    markup.createMarkup('beforeend', load(q));
+    const pagination = new Paginator(container, markup, moviesFetcher, q);
+    pagination.paginateLib(load(q).length);
     text.classList.add('hide-content');
   } else {
     text.classList.remove('hide-content');
   }
-});
-queueBtn.addEventListener('click', event => {
-  markup.clearMarkup();
-
-  if (load('queue') !== undefined) {
-    markup.createMarkup('beforeend', load('queue'));
-    const pagination = new Paginator(container, markup, moviesFetcher, 'queue');
-    pagination.paginateLib(load('queue').length);
-    text.classList.add('hide-content');
-  } else {
-    text.classList.remove('hide-content');
-  }
-});
-
-if (load('watched') !== undefined) {
-  markup.createMarkup('beforeend', load('watched'));
-  const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
-  pagination.paginateLib(load('watched').length);
-  text.classList.add('hide-content');
-} else {
-  text.classList.remove('hide-content');
 }
+
+loadFromStorage('watched');
