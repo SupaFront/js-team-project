@@ -92,7 +92,7 @@
 .header-item-link:focus {
   color: $accent-color;
 }
-.current-page::after {
+.current::after {
   position: absolute;
   content: '';
   width: 100%;
