@@ -8,7 +8,7 @@ const userQueryInput = document.querySelector('input');
 const formRef = document.querySelector('form');
 const galleryRef = document.querySelector('.film-gallery');
 const container = document.getElementById('pagination');
-
+ const loader = document.querySelector('#loader');
 const moviesFetcher = new MoviesFetcher();
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
 
@@ -21,6 +21,7 @@ formRef.addEventListener('submit', e => {
 
 async function searchMovies() {
   markupMaker.clearMarkup();
+  loader.classList.remove('disappear');
   try {
     const moviesArray = await moviesFetcher.searchMovie();
     markupMaker.createMarkup('beforeend', moviesArray.results);
@@ -28,5 +29,7 @@ async function searchMovies() {
     pagination.paginateSearch(moviesArray.total_results);
   } catch {
     Notiflix.Notify.failure('Nothing is found, please try again');
+  } finally {
+    loader.classList.add('disappear');
   }
 }
