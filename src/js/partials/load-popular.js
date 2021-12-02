@@ -10,9 +10,9 @@ const container = document.getElementById('pagination');
 const moviesFetcher = new MoviesFetcher();
 const btnPopularByDay = document.querySelector('.js-by-day');
 const btnPopularByWeek = document.querySelector('.js-by-week');
-
 const pagEl = document.getElementById('pagination')
 const markupMaker = new markupClass(galleryRef, template, moviesFetcher);
+const btnSection = document.querySelector('.btns-wrapper')
 
 async function loadTrending(timeWindow) {
   markupMaker.clearMarkup();
@@ -27,7 +27,7 @@ async function loadTrending(timeWindow) {
 
   } finally {
     loader.classList.add('disappear')
-
+    btnSection.classList.remove('hide')
 
   }
 }
