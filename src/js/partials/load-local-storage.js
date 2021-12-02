@@ -12,27 +12,21 @@ const moviesFetcher = new MoviesFetcher();
 
 const markup = new MarkupCreator(galleryRef, filmTemplate, moviesFetcher);
 
-watchedBtn.addEventListener('click', event => {
-  markup.clearMarkup();
-  container.innerText = '';
-  if (load('watched') !== undefined) {
-    markup.createMarkup('beforeend', load('watched'));
-    const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
-    pagination.paginateLib(load('watched').length);
-  }
+watchedBtn.addEventListener('click', () => {
+  loadLibrary('watched');
 });
-queueBtn.addEventListener('click', event => {
-  markup.clearMarkup();
-  container.innerText = '';
-  if (load('queue') !== undefined) {
-    markup.createMarkup('beforeend', load('queue'));
-    const pagination = new Paginator(container, markup, moviesFetcher, 'queue');
-    pagination.paginateLib(load('queue').length);
-  }
+queueBtn.addEventListener('click', () => {
+  loadLibrary('queue');
 });
 
-if (load('watched') !== undefined) {
-  markup.createMarkup('beforeend', load('watched'));
-  const pagination = new Paginator(container, markup, moviesFetcher, 'watched');
-  pagination.paginateLib(load('watched').length);
+function loadLibrary(q) {
+  markup.clearMarkup();
+  container.innerHTML = '';
+  if (load(q) !== undefined) {
+    markup.createMarkup('beforeend', load(q));
+    const pagination = new Paginator(container, markup, moviesFetcher, q);
+    pagination.paginateLib(load(q).length);
+  }
 }
+
+loadLibrary('watched');
