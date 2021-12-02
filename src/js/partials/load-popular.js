@@ -25,6 +25,9 @@ async function loadTrending(timeWindow) {
   } catch (e) {
     Notify.failure(`Something went wrong ${e}`);
 
+  } finally {
+    loader.classList.add('disappear')
+
 
   }
 }

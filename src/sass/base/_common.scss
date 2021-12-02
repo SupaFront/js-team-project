@@ -1,6 +1,9 @@
 body {
   font-family: $main-font;
   font-weight: 500;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
