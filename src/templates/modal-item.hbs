@@ -1,0 +1,32 @@
+<img data-id={{id}} src= {{#if poster_path}}"https://image.tmdb.org/t/p/w500{{poster_path}}"{{else}}"https://picsum.photos/200/300
+"{{/if}}
+ alt="film" class="poster-img"/>      
+ <div class="film-info">
+        <h2 class="modal-film-title">{{title}}</h2>
+
+        <div class="info-container">
+          <div class="left-side-info">
+            <p>Vote / Votes</p>
+            <p>Popularity</p>
+            <p>Original Title</p>
+            <p>Genre</p>
+          </div>
+
+          <div class="right-side-info">
+            <p><span class="mark">{{vote_average}}</span><span class="slash"> / </span>{{vote_count}}</p>
+            <p>{{popularity}}</p>
+            <p class="original">{{original_title}}</p>
+            <p>
+              {{#each genres}}
+              <span class="genres">{{this.name}}</span>
+              {{/each}}
+            </p>
+          </div>
+        </div>
+
+        <h3 class="about-title">About</h3>
+        <p class="about-text">{{overview}}</p>
+        <div class="btn-container">
+          <button class="modal-btn watched" type="button">add to Watched</button>
+          <button class="modal-btn queue" type="button">add to queue</button>
+        </div>

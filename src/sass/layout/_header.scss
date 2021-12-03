@@ -1,0 +1,153 @@
+.header {
+  //0-767
+  color: $primary-color;
+  padding-top: 48px;
+  padding-bottom: 97px;
+  background-size: contain;
+  @media screen and (max-width: 767px) {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/mobile/home-header2x.jpg);
+    &-title {
+      display: none;
+    }
+  }
+  @media (min-device-pixel-ratio: 2) and (max-width: 767px),
+    (min-resolution: 192dpi) and (max-width: 767px),
+    (min-resolution: 2dppx) and (max-width: 767px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images//mobile/home-header.jpg);
+  }
+  //768
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/tablet/home-header2x.jpg);
+  }
+  @media (min-device-pixel-ratio: 2) and (min-width: 768px),
+    (min-resolution: 192dpi) and (min-width: 768px),
+    (min-resolution: 2dppx) and (min-width: 768px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/tablet/home-header.jpg);
+  }
+  //1200
+  @media screen and (min-width: 1024px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/desktop/home-header2x.jpg);
+  }
+  @media (min-device-pixel-ratio: 2) and (min-width: 1024px),
+    (min-resolution: 192dpi) and (min-width: 1024px),
+    (min-resolution: 2dppx) and (min-width: 1024px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/desktop/home-header.jpg);
+  }
+}
+
+.header-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  stroke: $logo-fill-color;
+  margin-right: 12px;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (max-width: 767px) {
+    &:hover,
+    &:focus {
+      stroke: $accent-color;
+    }
+  }
+}
+.header-logo-link,
+.header-icon {
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1), stroke 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.header-logo-link:hover,
+.header-logo-link:focus {
+  color: $accent-color;
+  .header-icon {
+    stroke: $accent-color;
+  }
+}
+.header-title {
+  font-size: 30px;
+  line-height: 1.16;
+}
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.header-menu {
+  display: flex;
+  font-size: 12px;
+  line-height: 1.16;
+}
+.header-menu-item:last-child {
+  margin-left: 40px;
+}
+.header-item-link {
+  position: relative;
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.header-item-link:hover,
+.header-item-link:focus {
+  color: $accent-color;
+}
+.current::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 3px;
+  left: 0px;
+  top: 14px;
+  background-color: $accent-color;
+}
+//ПОИСК ФИЛЬМА
+.input-box {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.5px solid $primary-color;
+  color: $primary-color;
+  width: 100%;
+  font-size: 14px;
+  outline: none;
+  &::placeholder {
+    opacity: 1;
+    color: $primary-color;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.14;
+  }
+}
+.search-film-form {
+  margin-top: 40px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 767px) {
+    max-width: 280px;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 336px;
+  }
+}
+.btn-search {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  margin-left: -12px;
+  padding: 0;
+  cursor: pointer;
+}
+.search-icon {
+  width: 12px;
+  height: 12px;
+  stroke: $primary-color;
+
+  transition: stroke 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    stroke: $accent-color;
+  }
+}

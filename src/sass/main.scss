@@ -1,0 +1,17 @@
+////UTILS
+@import './utils/variables';
+////BASE
+
+@import './base/common.scss';
+@import './base/loader.scss';
+@import './base/container.scss';
+@import './base/section-padding.scss';
+
+////LAYOUT
+@import './layout/header.scss';
+@import './layout/main-sec.scss';
+@import './layout/footer.scss';
+@import './layout/modal.scss';
+@import './layout/library-header.scss';
+@import './layout/gallery1';
+@import './utils/scroll';
