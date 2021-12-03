@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 45px;
+  margin-top: 40px;
 }
 
 .inner-page-number {
@@ -124,4 +124,8 @@
     flex-basis: calc((100% - 90px) / 3);
     width: 294px;
   }
+}
+
+.sec-pag-gal {
+  padding-bottom: 50px;
 }
