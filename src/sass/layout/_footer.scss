@@ -148,11 +148,16 @@
 .team-item {
  position: relative;
   display: inline-flex;
+  flex-basis: calc((100% - 30px * var(--grid-item)) / var(--grid-item));
+  margin-left: 30px;
+  --grid-item: 3;
   width: 192px;
   height: 250px;
   margin-left: 10px;
   margin-bottom: 30px;
 }
+
+
 
 .modal-photo-text {
     position: absolute;
