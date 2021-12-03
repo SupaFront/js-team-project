@@ -3,18 +3,40 @@
     openModalBtn: document.querySelector('.students-link'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
+    bodyEl: document.querySelector('body')
   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
 
-
-  const bodyEl = document.querySelector('body');
-  bodyEl.style.overflow = 'hidden';
-
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
+  function openModal() {
+    refs.modal.classList.remove('is-hidden');
+    refs.modal.classList.add('show');
+    const bodyEl = document.querySelector('body');
+    bodyEl.style.overflow = 'hidden';
   }
+
+function closeModal() {
+  refs.modal.classList.add('is-hidden');
+    refs.modal.classList.remove('show');
+  const bodyEl = document.querySelector('body');
+  bodyEl.style.overflow = '';
+}
+
+refs.modal.addEventListener('click', (e) => {
+  if (e.target === refs.modal) {
+      closeModal();
+  }
+});
+
+
+document.addEventListener('keydown', (e) => {
+  if (e.code === "Escape") { 
+      closeModal();
+  }
+});
+
+  refs.openModalBtn.addEventListener('click', openModal);
+  refs.closeModalBtn.addEventListener('click', closeModal);
+
 
   // function closeModalByEsc(evt) {
   //   if (evt.code === 'Escape') {
