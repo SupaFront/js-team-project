@@ -13,25 +13,30 @@ const text = document.querySelector('.empty-page');
 const moviesFetcher = new MoviesFetcher();
 const markup = new MarkupCreator(galleryRef, filmTemplate, moviesFetcher);
 
-watchedBtn.addEventListener('click', () => {
-  loadFromStorage('watched');
+let currentQ = 'watched';
+
+watchedBtn?.addEventListener('click', () => {
+  currentQ = 'watched';
+  loadFromStorage();
 });
 
-queueBtn.addEventListener('click', () => {
-  loadFromStorage('queue');
+queueBtn?.addEventListener('click', () => {
+  currentQ = 'queue';
+  loadFromStorage();
 });
 
-function loadFromStorage(q) {
+function loadFromStorage() {
   markup.clearMarkup();
   container.innerHTML = '';
-  if (load(q) !== undefined) {
-    markup.createMarkup('beforeend', load(q));
-    const pagination = new Paginator(container, markup, moviesFetcher, q);
-    pagination.paginateLib(load(q).length);
-    text.classList.add('hide-content');
+  if (load(currentQ) !== undefined) {
+    markup.createMarkup('beforeend', load(currentQ));
+    const pagination = new Paginator(container, markup, moviesFetcher, currentQ);
+    pagination.paginateLib(load(currentQ).length);
+    text?.classList.add('hide-content');
   } else {
-    text.classList.remove('hide-content');
+    text?.classList.remove('hide-content');
   }
 }
 
-loadFromStorage('watched');
+loadFromStorage();
+export default loadFromStorage;

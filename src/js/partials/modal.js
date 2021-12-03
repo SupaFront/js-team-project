@@ -2,12 +2,13 @@ import markupClass from './markup-creator';
 import MoviesFetcher from './fetcher-class';
 import filmTemplate from '../../templates/modal-item.hbs';
 import { save, load, remove } from './local-storage-functions';
+import loadFromStorage from './load-local-storage';
 
 const galleryRef = document.querySelector('.film-gallery');
 const modalBackdropEl = document.querySelector('.modal-backdrop');
 const closeModalBtn = document.querySelector('.modal-cls-btn');
 const cardContainerEl = document.querySelector('.card-container');
-const scrollBtn = document.querySelector('.back_to_top')
+const scrollBtn = document.querySelector('.back_to_top');
 const fetchFilm = new MoviesFetcher();
 const filmMarkup = new markupClass(cardContainerEl, filmTemplate, fetchFilm);
 
@@ -35,7 +36,7 @@ function openModal(obj) {
   window.addEventListener('keydown', closeModalByEsc);
   closeModalBtn.addEventListener('click', closeModal);
   modalBackdropEl.addEventListener('click', closeModalByBackdrop);
-      scrollBtn.classList.remove('back_to_top-show');
+  scrollBtn.classList.remove('back_to_top-show');
 
   // Для кнопок внутри модалки
   const watchedBtn = cardContainerEl.querySelector('.watched');
@@ -53,6 +54,9 @@ function openModal(obj) {
 
 // Закрытие модалки
 function closeModal() {
+  if (window.location.pathname === '/library.html') {
+    loadFromStorage();
+  }
   modalBackdropEl.classList.add('is-hidden');
   filmMarkup.clearMarkup();
 
