@@ -70,6 +70,7 @@
 // Кнопка закрытия
 
 .modal-cls-btn {
+  cursor: pointer;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -214,6 +215,7 @@
 }
 
 .modal-btn {
+  cursor: pointer;
   padding: 0 7px;
   height: 44px;
   border: 1px solid $secondary-color;
